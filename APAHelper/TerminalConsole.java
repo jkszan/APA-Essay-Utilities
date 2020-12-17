@@ -2,7 +2,6 @@ package APAHelper;
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
 public class TerminalConsole{
     
@@ -11,26 +10,15 @@ public class TerminalConsole{
     InputHandler textHandler;
     Boolean ongoing;
 
-
     public TerminalConsole(){
 
         consoleWriter = new BufferedWriter(new OutputStreamWriter(System.out));
-        textHandler = new InputHandler();
+        textHandler = new InputHandler(this);
         ongoing = true;
 
     }
 
-    private void printWelcomeString(){
-        try{
-        consoleWriter.write("Hello and welcome to the APAHelper tool, to get information on a paper, please use the paperAnalytics command below\n");
-        consoleWriter.flush();
-        }
-        catch(IOException E){
-            System.err.println("Unexpected Error Printing Welcome Message");
-        }
-    }
-
-    private void displayCommandList(){
+    public void displayCommandList(){
 
         try{
         consoleWriter.write("Command List:");
@@ -44,26 +32,30 @@ public class TerminalConsole{
         consoleWriter.flush();
         }
         catch(IOException E){
-            System.err.println("Unexpected Error Printing Command List");
+            errDisplay("Unexpected Error Printing Command List");
         }
 
     }
 
-    public static void main(String[] args){
-
-        TerminalConsole output = new TerminalConsole();
-        Scanner inputReader = new Scanner(System.in);
-
-        output.printWelcomeString();
-        while(output.ongoing){
-
-            output.displayCommandList();
-            output.textHandler.parse(inputReader.nextLine());
-
-        }
-
+    public void errDisplay(String error){
+        System.err.println(error);
     }
 
+    public void display(String text){
+        System.out.println(text);
+    }
 
+    public void display(String[] text){
+    
+        try{
+            for(int i = 0; i < text.length; i++){
+                consoleWriter.write(text[i]);
+            }
+            consoleWriter.flush();
+        }
+        catch(IOException E){
+            errDisplay("Unexpected Error Printing List");
+        }
+    }
 
 }
