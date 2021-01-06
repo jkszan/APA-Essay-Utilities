@@ -1,4 +1,4 @@
-package APAHelper;
+package APAHelper.Code;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

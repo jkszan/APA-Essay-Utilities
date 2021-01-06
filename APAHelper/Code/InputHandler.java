@@ -1,4 +1,4 @@
-package APAHelper;
+package APAHelper.Code;
 
 public class InputHandler{
     
