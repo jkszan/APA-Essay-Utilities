@@ -1,4 +1,4 @@
-package APAHelper.Code;
+package APAHelper;
 
 public class InputHandler {
 
@@ -50,7 +50,7 @@ public class InputHandler {
 
     public static void main(String[] args) {
 
-        InputHandler textHandler = new InputHandler();
+        new InputHandler();
 
     }
 

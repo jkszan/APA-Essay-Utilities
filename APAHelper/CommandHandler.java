@@ -1,4 +1,4 @@
-package APAHelper.Code;
+package APAHelper;
 
 import java.util.Queue;
 import java.util.LinkedList;
